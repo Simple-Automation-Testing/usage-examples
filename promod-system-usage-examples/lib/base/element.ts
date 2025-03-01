@@ -14,7 +14,9 @@ import type { LazyElement } from '../mock/element';
  * 	}
  * }
  */
-export type TBaseElement = typeof BaseElement;
+export type TWaitOpts = unknown;
+export type TActionOpts = unknown;
+
 export class BaseElement {
   public id: string;
 

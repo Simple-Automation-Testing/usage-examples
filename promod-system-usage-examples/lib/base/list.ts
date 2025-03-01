@@ -23,11 +23,19 @@ type TAction = {
   _action?: unknown;
 };
 
-export type TtemListActionData<T extends TAction> = {
+export type TItemListAction<T extends TAction> = {
   _whereContent?: T['_whereContent'];
   _whereVisibiliy?: T['_whereVisibiliy'];
   _action?: T['_action'];
 };
+
+export type TItemListCheck<T extends TAction> = TItemListAction<T> &
+  T['_whereContent'] &
+  T['_whereVisibiliy'];
+
+export type TItemListCompare<T extends TAction> = TItemListAction<T> &
+  T['_whereContent'] &
+  T['_whereVisibiliy'];
 
 export type TItemListResultData<T> = T[];
 
@@ -44,12 +52,14 @@ export class ItemList {
     this.Item = Item;
   }
 
+  getListItem(index: number) {
+    return new this.Item(this.roots.get(index), `${this.id} item ${index}`);
+  }
+
   private async getListItems(): Promise<TBaseActions[]> {
     const amountOfRootElementsOnPage = await this.roots.amount();
 
-    return lengthToIndexesArray(amountOfRootElementsOnPage).map(
-      index => new this.Item(this.roots.get(index), `${this.id} item ${index}`)
-    );
+    return lengthToIndexesArray(amountOfRootElementsOnPage).map(index => this.getListItem(index));
   }
 
   private async findByContent(contentPattern, list?: TBaseActions[], opts?: TCompareOpts) {

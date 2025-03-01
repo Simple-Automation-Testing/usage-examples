@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "generate:actions:types": "promod-system --types --ts",
+    "debug": "./playground/cli.js --types --ts"
   },
   "keywords": [],
   "author": "",
