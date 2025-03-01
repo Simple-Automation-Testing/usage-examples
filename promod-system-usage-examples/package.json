@@ -1,0 +1,19 @@
+{
+  "name": "promod-system-usage-examples",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "promod-system": "^3.5.1",
+    "sat-compare": "^0.1.0",
+    "sat-utils": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}

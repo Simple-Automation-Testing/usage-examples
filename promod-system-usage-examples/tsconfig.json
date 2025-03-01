@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "ES2022",
+		"sourceMap": true,
+		"outDir": "built",
+		"declaration": true,
+		"experimentalDecorators": true,
+		"allowJs": true
+	},
+	"exclude": [
+		"node_modules",
+		"built",
+		"specs",
+		"example",
+		"playground.*",
+		"playground",
+		"bin",
+		"promod.system.config.js"
+	]
+}
