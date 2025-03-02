@@ -27,8 +27,8 @@ const collectionActionTypes = {
 
 const baseElementsActionsDescription = {
   Input: {
-    sendKeys: {
-      entryType: 'SendKeys',
+    setKeys: {
+      entryType: 'setKeys',
     },
     ...commonActions,
   },
@@ -52,11 +52,11 @@ const baseCollectionActionsDescription = {
     entryType: {
       where: { action: '_whereContent', actionType: 'resultType' },
       visible: { action: '_whereVisibiliy', actionType: 'resultType' },
-      action: { action: 'get', actionType: 'entryType' },
+      action: { action: 'getContent', actionType: 'entryType' },
       generic: collectionActionTypes.action,
     },
     resultType: {
-      action: { action: 'get', actionType: 'resultType' },
+      action: { action: 'getContent', actionType: 'resultType' },
       endType: '[]',
     },
   },
@@ -65,15 +65,15 @@ const baseCollectionActionsDescription = {
       ...collectionGenericAction,
     },
     resultType: {
-      click: { action: 'isDisplayed', actionType: 'resultType' },
+      click: { action: 'getVisibility', actionType: 'resultType' },
       endType: '[]',
     },
   },
-  sendKeys: {
+  setKeys: {
     entryType: {
       where: { action: '_whereContent', actionType: 'resultType' },
       visible: { action: '_whereVisibiliy', actionType: 'resultType' },
-      action: { action: 'sendKeys', actionType: 'entryType' },
+      action: { action: 'setKeys', actionType: 'entryType' },
       generic: collectionActionTypes.action,
     },
   },
@@ -89,13 +89,13 @@ const baseCollectionActionsDescription = {
     entryType: {
       where: { action: '_whereContent', actionType: 'resultType' },
       visible: { action: '_whereVisibiliy', actionType: 'resultType' },
-      action: { action: 'get', actionType: 'entryType' },
+      action: { action: 'getContent', actionType: 'entryType' },
       generic: collectionActionTypes.action,
     },
     resultType: {
       where: { action: '_whereContent', actionType: 'resultType' },
       visible: { action: '_whereVisibiliy', actionType: 'resultType' },
-      action: { action: 'get', actionType: 'entryType' },
+      action: { action: 'getContent', actionType: 'entryType' },
       generic: collectionActionTypes.action,
     },
   },
@@ -113,7 +113,7 @@ const resultActionsMap = {
   click: 'void',
   getContent: 'resultType',
   getVisibility: 'resultType',
-  sendKeys: 'void',
+  setKeys: 'void',
 };
 
 const baseLibraryDescription = {
@@ -134,23 +134,24 @@ const baseLibraryDescription = {
   getVisibilityMethod: 'getVisibility',
   getBaseElementFromCollectionByIndex: 'get',
   getCollectionItemInstance: 'getListItem',
+  getCollectionTypeFormat: 'object',
 };
 
 const collectionRandomDataDescription = {
   _whereContent: {
-    action: '_whereContentContent',
+    action: '_whereContent',
     actionType: 'resultType',
   },
   _whereVisibiliy: {
-    action: '_whereContentVisibiliy',
+    action: '_whereVisibiliy',
     actionType: 'resultType',
   },
 };
 
 const collectionDescription = {
   action: '_action',
-  where: '_whereContentContent',
-  visible: '_whereContentVisibiliy',
+  where: '_whereContent',
+  visible: '_whereVisibiliy',
   length: 'length',
 };
 
