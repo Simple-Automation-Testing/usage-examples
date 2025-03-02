@@ -145,25 +145,14 @@ const collectionActionTypes = {
 const collectionGenericAction = {
   where: { action: '_whereContent', actionType: 'resultType' },
   visible: { action: '_whereVisibiliy', actionType: 'resultType' },
-  action: { action: 'getVisibility', actionType: 'entryType' },
   generic: collectionActionTypes.action,
 };
 
 const baseCollectionActionsDescription = {
-  waitContent: {
-    entryType: {
-      where: { action: '_whereContent', actionType: 'resultType' },
-      visible: { action: '_whereVisibiliy', actionType: 'resultType' },
-      action: { action: 'getContent', actionType: 'entryType' },
-      generic: collectionActionTypes.check,
-    },
-  },
   getContent: {
     entryType: {
-      where: { action: '_whereContent', actionType: 'resultType' },
-      visible: { action: '_whereVisibiliy', actionType: 'resultType' },
+      ...collectionGenericAction,
       action: { action: 'getContent', actionType: 'entryType' },
-      generic: collectionActionTypes.action,
     },
     resultType: {
       action: { action: 'getContent', actionType: 'resultType' },
@@ -173,6 +162,7 @@ const baseCollectionActionsDescription = {
   getVisibility: {
     entryType: {
       ...collectionGenericAction,
+      action: { action: 'getVisibility', actionType: 'entryType' },
     },
     resultType: {
       click: { action: 'getVisibility', actionType: 'resultType' },
@@ -181,26 +171,22 @@ const baseCollectionActionsDescription = {
   },
   setKeys: {
     entryType: {
-      where: { action: '_whereContent', actionType: 'resultType' },
-      visible: { action: '_whereVisibiliy', actionType: 'resultType' },
+      ...collectionGenericAction,
       action: { action: 'setKeys', actionType: 'entryType' },
-      generic: collectionActionTypes.action,
     },
   },
   click: {
     entryType: {
-      where: { action: '_whereContent', actionType: 'resultType' },
-      visible: { action: '_whereVisibiliy', actionType: 'resultType' },
+      ...collectionGenericAction,
       action: { action: 'click', actionType: 'entryType' },
-      generic: collectionActionTypes.action,
     },
   },
   _whereContent: {
     entryType: {
       where: { action: '_whereContent', actionType: 'resultType' },
       visible: { action: '_whereVisibiliy', actionType: 'resultType' },
-      action: { action: 'getContent', actionType: 'entryType' },
       generic: collectionActionTypes.action,
+      action: { action: 'getContent', actionType: 'entryType' },
     },
     resultType: {
       where: { action: '_whereContent', actionType: 'resultType' },
@@ -217,8 +203,21 @@ const baseCollectionActionsDescription = {
       ...collectionGenericAction,
     },
   },
+  waitContent: {
+    entryType: {
+      where: { action: '_whereContent', actionType: 'resultType' },
+      visible: { action: '_whereVisibiliy', actionType: 'resultType' },
+      action: { action: 'getContent', actionType: 'entryType' },
+      generic: collectionActionTypes.check,
+    },
+  },
 };
 
+/**
+ * @info definitions of the actions that are used in generated types
+ * to avoid any misconceptions in generated code and expected behavior
+ * on actions usage level
+ */
 const resultActionsMap = {
   click: 'void',
   getContent: 'resultType',
@@ -228,9 +227,45 @@ const resultActionsMap = {
   waitContent: 'void',
 };
 
+/**
+ * @info base library description
+ *
+ *
+ * @example file ./lib/base/list.ts
+ * getListItem method is used to get collection item instance
+ *
+ * const listItems = new ItemList($$('input'), 'Inputs list', Input);
+ *
+ * const secondInput = listItems.getListItem(1);
+ * used index 1 to get second input element since indexes are started from 0
+ *
+ *
+ * @property getPageInstance is used by generator to get page instance
+ * @property entityId is used to proper name of the action
+ * @property pageId is used to indentify page class from the module if getPageInstance property is not defined
+ * @property fragmentId is used to define entity id property name
+ * @property getCollectionTypeFormat is used to define strategy of collection type generation
+ * @example file ./lib/base/list.ts
+ *
+ * type declaration of the list requires generated type to be defined as one type
+ * which is used for generic
+ *
+ * type TAction = {
+ *  _whereContent?: unknown;
+ *  _whereVisibiliy?: unknown;
+ *  _action?: unknown;
+ * };
+ *
+ * export type TItemListAction<T extends TAction> = {
+ *  _whereContent?: T['_whereContent'];
+ *  _whereVisibiliy?: T['_whereVisibiliy'];
+ *  _action?: T['_action'];
+ * };
+ *
+ * it is possible to have TItemListAction<TWhere, TVilible, TAction> type
+ * which has 3 generic types used
+ */
 const baseLibraryDescription = {
-  getBaseElementFromCollectionByIndex: 'get',
-
   getPageInstance: 'getPage',
 
   getDataMethod: 'getContent',
@@ -246,10 +281,10 @@ const baseLibraryDescription = {
   generalActionOptionsId: 'TActionOpts',
 
   collectionId: 'ItemList',
-  collectionItemId: 'Item',
   collectionRootElementsId: 'roots',
 
   getCollectionItemInstance: 'getListItem',
+
   getCollectionTypeFormat: 'object',
 };
 
@@ -259,7 +294,6 @@ const collectionRandomDataDescription = {
     actionType: 'resultType',
   },
   _whereVisibiliy: {
-    getDataMethod: 'getContent',
     action: '_whereVisibiliy',
     actionType: 'resultType',
   },
