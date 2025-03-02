@@ -20,26 +20,22 @@ export type TActionOpts = unknown;
 export class BaseElement {
   public id: string;
 
-  private root: LazyElement;
+  protected root: LazyElement;
 
   constructor(rootElement: LazyElement, id: string) {
     this.id = id;
     this.root = rootElement;
   }
 
-  async setKeys(setKeysData: string) {
-    await this.root.set(setKeysData);
-  }
-
-  async click() {
+  async click(..._args: unknown[]) {
     await this.root.click();
   }
 
-  async getContent() {
+  async getContent(..._args: unknown[]) {
     return await this.root.text();
   }
 
-  async getVisibility() {
+  async getVisibility(..._args: unknown[]) {
     return await this.root.visible();
   }
 

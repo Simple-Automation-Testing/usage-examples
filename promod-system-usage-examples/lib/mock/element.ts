@@ -5,6 +5,7 @@ export type LazyElement = {
   $$(selector: string): LazyElement;
   get(index: number): LazyElement;
 
+  getInputValue(): Promise<string>;
   click(): Promise<void>;
   set(value: string): Promise<void>;
   text(): Promise<string>;

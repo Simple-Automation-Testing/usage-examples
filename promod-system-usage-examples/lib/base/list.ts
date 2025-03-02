@@ -6,14 +6,9 @@ import type { LazyElement } from '../mock/element';
 import type { TBaseActions } from './.type.d';
 
 /**
- * @info ItemList class that should be extended by all page objects
+ * @info
  *
  * @example
- * class BuyerCardFragment extends BaseFragment {
- *
- * 	constructor(root, id) {
- * 		super(root, id);
- * 	}
  *
  */
 
@@ -33,9 +28,7 @@ export type TItemListCheck<T extends TAction> = TItemListAction<T> &
   T['_whereContent'] &
   T['_whereVisibiliy'];
 
-export type TItemListCompare<T extends TAction> = TItemListAction<T> &
-  T['_whereContent'] &
-  T['_whereVisibiliy'];
+export type TItemListCompare<T extends TAction> = TItemListAction<T> & T['_whereContent'];
 
 export type TItemListResultData<T> = T[];
 
