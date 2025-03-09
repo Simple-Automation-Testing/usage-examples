@@ -15,12 +15,10 @@ class BuyerPage extends BasePage {
   constructor() {
     super('#my_page', 'Buyer client page');
 
-    // this.header = this.create('#header', 'Header', HeaderFragment);
-    // this.footer = this.create('#footer', 'Footer', FooterFragment);
+    this.header = this.create('#header', 'Header', HeaderFragment);
+    this.footer = this.create('#footer', 'Footer', FooterFragment);
     this.cards = this.create('.card_item', 'Cards', ItemList, CardFragment);
   }
 }
 
-const getPage = wrapAsSingleton(BuyerPage);
-
-export { getPage };
+export const getPage = wrapAsSingleton(BuyerPage);

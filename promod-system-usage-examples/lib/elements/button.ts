@@ -1,6 +1,6 @@
 import { BaseElement } from '../base/element';
 
-export type ButtonAction = null;
+export type ButtonAction = null | 'click'
 export type ButtonVisible = boolean;
 export type ButtonContent = string;
 

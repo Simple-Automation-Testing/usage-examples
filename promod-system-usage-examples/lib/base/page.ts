@@ -26,11 +26,7 @@ export class BasePage {
   }
 
   create(selector, name, ChildOrList, Child?) {
-    return new ChildOrList(
-      this.root[ChildOrList instanceof ItemList ? '$$' : '$'](selector),
-      name,
-      Child
-    );
+    return new ChildOrList(this.root[ChildOrList instanceof ItemList ? '$$' : '$'](selector), name, Child);
   }
 
   async setKeys(setKeysData) {

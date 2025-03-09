@@ -12,7 +12,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "promod-system": "^3.6.0",
+    "chain-simple": "^1.3.3",
+    "promod-system": "^3.6.1",
     "sat-compare": "^0.1.0",
     "sat-utils": "^3.0.3",
     "ts-node": "^10.9.2",

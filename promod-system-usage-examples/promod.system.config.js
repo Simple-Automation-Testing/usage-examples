@@ -91,7 +91,7 @@ const commonActions = {
 const baseElementsActionsDescription = {
   Input: {
     setKeys: {
-      entryType: 'setKeys',
+      entryType: 'SetKeys',
     },
     ...commonActions,
   },
@@ -140,6 +140,21 @@ const collectionActionTypes = {
   action: 'TItemListAction',
   check: 'TItemListCheck',
   compare: 'TItemListCompare',
+};
+
+/**
+ * @info collectionDescription
+ * collectionDescription is used to define collection actions object
+ * that is used in generated code and usage on test level
+ *
+ * @see promod.system.config.js:110
+ *
+ */
+const collectionDescription = {
+  action: '_action',
+  where: '_whereContent',
+  visible: '_whereVisibiliy',
+  length: 'length',
 };
 
 const collectionGenericAction = {
@@ -299,18 +314,6 @@ const collectionRandomDataDescription = {
   },
 };
 
-const collectionDescription = {
-  action: '_action',
-  where: '_whereContent',
-  visible: '_whereVisibiliy',
-  length: 'length',
-};
-
-const elementAction = {
-  getText: 'text',
-  getContent: 'text',
-};
-
 module.exports = {
   pathToBase: 'lib',
   baseElementsActionsDescription,
@@ -319,6 +322,5 @@ module.exports = {
   baseLibraryDescription,
   collectionDescription,
   collectionRandomDataDescription,
-  elementAction,
   collectionActionTypes,
 };
