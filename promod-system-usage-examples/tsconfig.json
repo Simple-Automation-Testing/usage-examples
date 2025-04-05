@@ -14,11 +14,7 @@
 	"exclude": [
 		"node_modules",
 		"built",
-		"specs",
 		"example",
-		"playground.*",
-		"playground",
-		"bin",
-		"promod.system.config.js"
+		"playground"
 	]
 }

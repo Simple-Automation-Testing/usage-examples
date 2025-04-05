@@ -35,6 +35,14 @@ class ElementMock {
     return getRandomNumberFromRange(2, 10);
   }
 
+  set(value: string) {
+    // console.log(`Set value: ${value} to ${this.selector} on page`);
+  }
+
+  click(value: string) {
+    // console.log(`Click: ${this.selector} on page with value: ${value}`);
+  }
+
   get(index) {
     return new ElementMock(this.selector, index);
   }

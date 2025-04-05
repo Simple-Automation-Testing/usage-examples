@@ -1,4 +1,4 @@
-import { getMochaPreparedRunner } from '../playground';
+import { getMochaPreparedRunner } from 'promod-system';
 import { I } from './actor';
 
 const fixtures = { I };
@@ -12,8 +12,6 @@ export const provider = {
     const { addReporters, updateCaseName, ...testRunner } = getMochaPreparedRunner<typeof fixtures, TTestOptions>(
       fixtures,
     );
-
-    testRunner.test('a', async fx => {});
 
     return testRunner;
   },

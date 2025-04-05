@@ -31,13 +31,13 @@ export class BasePage {
 
   async setKeys(setKeysData) {
     for (const [key, value] of Object.entries(setKeysData)) {
-      await this[key].sendKeys(value);
+      await this[key].setKeys(value);
     }
   }
 
   async click(clickData) {
     for (const [key, value] of Object.entries(clickData)) {
-      await this[key].sendKeys(value);
+      await this[key].click(value);
     }
   }
 
@@ -45,17 +45,27 @@ export class BasePage {
     const result = {};
 
     for (const [key, value] of Object.entries(getContentData)) {
-      result[key] = await this[key].sendKeys(value);
+      result[key] = await this[key].getContent(value);
     }
 
     return result;
+  }
+
+  async waitContent(waitContentData) {
+    // TODO: add waitContent
+    // console.log('waitContent logic here', waitContentData);
+  }
+
+  async waitVisibility(waitVisibilityData) {
+    // TODO: add waitContent
+    // console.log('waitContent logic here', waitVisibilityData);
   }
 
   async getVisibility(getVisibilityData) {
     const result = {};
 
     for (const [key, value] of Object.entries(getVisibilityData)) {
-      result[key] = await this[key].sendKeys(value);
+      result[key] = await this[key].getVisibility(value);
     }
 
     return result;
