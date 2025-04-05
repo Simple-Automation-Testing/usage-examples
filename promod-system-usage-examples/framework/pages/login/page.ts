@@ -9,7 +9,7 @@ class LoginPage extends BasePage {
 
   constructor() {
     super('#login_page', 'Login page');
-
+    console.log('LoginPage constructor');
     this.email = this.create('#email', 'Email', Input);
     this.password = this.create('#pass', 'Password', Input);
     this.login = this.create('#login', 'Login', Button);

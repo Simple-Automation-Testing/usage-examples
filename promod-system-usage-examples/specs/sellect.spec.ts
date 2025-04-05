@@ -12,5 +12,10 @@ suite('Seller example ', () => {
     await I.onSellerCompanyPageWaitContentHeader({
       signIn: 'You are signed in as seller',
     });
+    await I.onBuyerClientPageWaitContentCards({
+      _whereContent: { title: t => t.length > 10 },
+      _whereVisibiliy: { buy: true },
+      buy: 'Buy now',
+    });
   });
 });

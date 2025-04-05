@@ -24,9 +24,9 @@ export type TItemListAction<T extends TAction> = {
   _action?: T['_action'];
 };
 
-export type TItemListCheck<T extends TAction> = TItemListAction<T> &
-  T['_whereContent'] &
-  T['_whereVisibiliy'];
+export type TItemListCheck<T extends TAction> =
+  | (TItemListAction<T> & T['_whereContent'])
+  | T['_whereVisibiliy'];
 
 export type TItemListCompare<T extends TAction> = TItemListAction<T> & T['_whereContent'];
 
@@ -52,16 +52,26 @@ export class ItemList {
   private async getListItems(): Promise<TBaseActions[]> {
     const amountOfRootElementsOnPage = await this.roots.amount();
 
-    return lengthToIndexesArray(amountOfRootElementsOnPage).map(index => this.getListItem(index));
+    return lengthToIndexesArray(amountOfRootElementsOnPage).map(index =>
+      this.getListItem(index),
+    );
   }
 
-  private async findByContent(contentPattern, list?: TBaseActions[], opts?: TCompareOpts) {
+  private async findByContent(
+    contentPattern,
+    list?: TBaseActions[],
+    opts?: TCompareOpts,
+  ) {
     const items: TBaseActions[] = list || (await this.getListItems());
 
     return asyncFilter(items, async item => item.compareContent(contentPattern, opts));
   }
 
-  private async findByVisibility(contentPattern, list?: TBaseActions[], opts?: TCompareOpts) {
+  private async findByVisibility(
+    contentPattern,
+    list?: TBaseActions[],
+    opts?: TCompareOpts,
+  ) {
     const items: TBaseActions[] = list || (await this.getListItems());
 
     return asyncFilter(items, async item => item.compareVisibility(contentPattern, opts));
@@ -114,7 +124,7 @@ export class ItemList {
 
     return asyncMap(
       await this.findElements(searchParams),
-      async item => await item.getContent(_action)
+      async item => await item.getContent(_action),
     );
   }
 
@@ -123,7 +133,7 @@ export class ItemList {
 
     return asyncMap(
       await this.findElements(searchParams),
-      async item => await item.getVisibility(_action)
+      async item => await item.getVisibility(_action),
     );
   }
 }
