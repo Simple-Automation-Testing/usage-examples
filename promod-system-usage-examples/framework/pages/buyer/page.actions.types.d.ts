@@ -13,7 +13,10 @@ import type {
   TextVisible,
 } from '../../../lib';
 
-type TonBuyerClientPageGetRandomDataAndFieldValuesFromCardsEntryFields = 'title' | 'price' | 'buy';
+type TonBuyerClientPageGetRandomDataAndFieldValuesFromCardsEntryFields =
+  | 'title'
+  | 'price'
+  | 'buy';
 type TonBuyerClientPageGetRandomDataAndFieldValuesFromCardsEntry = Omit<
   TItemListAction<{
     _whereContent: {
@@ -56,14 +59,20 @@ type TheaderClick = {
   logOut?: ButtonAction;
 };
 type TheaderClickResult = void;
-declare function onBuyerClientPageClickHeader(data: TheaderClick, opts?: TActionOpts): Promise<TheaderClickResult>;
+declare function onBuyerClientPageClickHeader(
+  data: TheaderClick,
+  opts?: TActionOpts,
+): Promise<TheaderClickResult>;
 
 type TfooterClick = {
   faq?: ButtonAction;
   contactUs?: ButtonAction;
 };
 type TfooterClickResult = void;
-declare function onBuyerClientPageClickFooter(data: TfooterClick, opts?: TActionOpts): Promise<TfooterClickResult>;
+declare function onBuyerClientPageClickFooter(
+  data: TfooterClick,
+  opts?: TActionOpts,
+): Promise<TfooterClickResult>;
 
 type TcardsClick = TItemListAction<{
   _whereContent: {
@@ -83,7 +92,10 @@ type TcardsClick = TItemListAction<{
   };
 }>;
 type TcardsClickResult = void;
-declare function onBuyerClientPageClickCards(data: TcardsClick, opts?: TActionOpts): Promise<TcardsClickResult>;
+declare function onBuyerClientPageClickCards(
+  data: TcardsClick,
+  opts?: TActionOpts,
+): Promise<TcardsClickResult>;
 
 /** ====================== click ================== */
 
@@ -156,7 +168,9 @@ type TheaderGetVisibilityResult = {
   signIn?: ButtonVisible;
   logOut?: ButtonVisible;
 };
-declare function onBuyerClientPageGetVisibilityHeader<Tentry extends TheaderGetVisibility>(
+declare function onBuyerClientPageGetVisibilityHeader<
+  Tentry extends TheaderGetVisibility,
+>(
   data: Tentry,
   opts?: TActionOpts,
 ): Promise<TresultBasedOnArgument<Tentry, TheaderGetVisibilityResult>>;
@@ -169,7 +183,9 @@ type TfooterGetVisibilityResult = {
   faq?: ButtonVisible;
   contactUs?: ButtonVisible;
 };
-declare function onBuyerClientPageGetVisibilityFooter<Tentry extends TfooterGetVisibility>(
+declare function onBuyerClientPageGetVisibilityFooter<
+  Tentry extends TfooterGetVisibility,
+>(
   data: Tentry,
   opts?: TActionOpts,
 ): Promise<TresultBasedOnArgument<Tentry, TfooterGetVisibilityResult>>;

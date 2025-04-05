@@ -40,7 +40,7 @@ export class BaseFragment {
 
   async click(clickData) {
     for (const [key, value] of Object.entries(clickData)) {
-      await this[key].sendKeys(value);
+      await this[key].click(value);
     }
   }
 
@@ -48,7 +48,7 @@ export class BaseFragment {
     const result = {};
 
     for (const [key, value] of Object.entries(getContentData)) {
-      result[key] = await this[key].sendKeys(value);
+      result[key] = await this[key].getContent(value);
     }
 
     return result;
@@ -58,7 +58,7 @@ export class BaseFragment {
     const result = {};
 
     for (const [key, value] of Object.entries(getVisibilityData)) {
-      result[key] = await this[key].sendKeys(value);
+      result[key] = await this[key].getVisibility(value);
     }
 
     return result;

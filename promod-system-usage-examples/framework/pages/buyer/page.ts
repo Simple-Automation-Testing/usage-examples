@@ -14,6 +14,7 @@ class BuyerPage extends BasePage {
 
   constructor() {
     super('#my_page', 'Buyer client page');
+    console.log('BuyerPage constructor, <<<<<<<<<<<<< ');
 
     this.header = this.create('#header', 'Header', HeaderFragment);
     this.footer = this.create('#footer', 'Footer', FooterFragment);
