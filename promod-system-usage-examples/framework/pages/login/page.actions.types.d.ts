@@ -71,7 +71,9 @@ type TonLoginPageGetVisibilityResult = {
   password?: InputVisible;
   login?: ButtonVisible;
 };
-declare function onLoginPageGetVisibilityPageElements<Tentry extends TonLoginPageGetVisibility>(
+declare function onLoginPageGetVisibilityPageElements<
+  Tentry extends TonLoginPageGetVisibility,
+>(
   data: Tentry,
   opts?: TActionOpts,
 ): Promise<TresultBasedOnArgument<Tentry, TonLoginPageGetVisibilityResult>>;
@@ -86,10 +88,9 @@ type TonLoginPageWaitContent = {
   login?: ButtonContent;
 };
 type TonLoginPageWaitContentResult = boolean;
-declare function onLoginPageWaitContentPageElements<Tentry extends TonLoginPageWaitContent>(
-  data: Tentry,
-  opts?: TActionOpts,
-): Promise<TonLoginPageWaitContentResult>;
+declare function onLoginPageWaitContentPageElements<
+  Tentry extends TonLoginPageWaitContent,
+>(data: Tentry, opts?: TActionOpts): Promise<TonLoginPageWaitContentResult>;
 
 /** ====================== waitContent ================== */
 

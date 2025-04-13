@@ -1,5 +1,11 @@
 import type { TresultBasedOnArgument, TobjectFromStringArray } from 'promod-system';
-import type { TWaitOpts, TActionOpts, ButtonAction, ButtonContent, ButtonVisible } from '../../../lib';
+import type {
+  TWaitOpts,
+  TActionOpts,
+  ButtonAction,
+  ButtonContent,
+  ButtonVisible,
+} from '../../../lib';
 
 /** ====================== setKeys ================== */
 
@@ -12,14 +18,20 @@ type TheaderClick = {
   logOut?: ButtonAction;
 };
 type TheaderClickResult = void;
-declare function onSellerCompanyPageClickHeader(data: TheaderClick, opts?: TActionOpts): Promise<TheaderClickResult>;
+declare function onSellerCompanyPageClickHeader(
+  data: TheaderClick,
+  opts?: TActionOpts,
+): Promise<TheaderClickResult>;
 
 type TfooterClick = {
   faq?: ButtonAction;
   contactUs?: ButtonAction;
 };
 type TfooterClickResult = void;
-declare function onSellerCompanyPageClickFooter(data: TfooterClick, opts?: TActionOpts): Promise<TfooterClickResult>;
+declare function onSellerCompanyPageClickFooter(
+  data: TfooterClick,
+  opts?: TActionOpts,
+): Promise<TfooterClickResult>;
 
 /** ====================== click ================== */
 
@@ -63,7 +75,9 @@ type TheaderGetVisibilityResult = {
   signIn?: ButtonVisible;
   logOut?: ButtonVisible;
 };
-declare function onSellerCompanyPageGetVisibilityHeader<Tentry extends TheaderGetVisibility>(
+declare function onSellerCompanyPageGetVisibilityHeader<
+  Tentry extends TheaderGetVisibility,
+>(
   data: Tentry,
   opts?: TActionOpts,
 ): Promise<TresultBasedOnArgument<Tentry, TheaderGetVisibilityResult>>;
@@ -76,7 +90,9 @@ type TfooterGetVisibilityResult = {
   faq?: ButtonVisible;
   contactUs?: ButtonVisible;
 };
-declare function onSellerCompanyPageGetVisibilityFooter<Tentry extends TfooterGetVisibility>(
+declare function onSellerCompanyPageGetVisibilityFooter<
+  Tentry extends TfooterGetVisibility,
+>(
   data: Tentry,
   opts?: TActionOpts,
 ): Promise<TresultBasedOnArgument<Tentry, TfooterGetVisibilityResult>>;

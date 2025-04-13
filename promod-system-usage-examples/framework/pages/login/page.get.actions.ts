@@ -2,7 +2,11 @@ import { resolve } from 'path';
 import { createPurePageActions } from 'promod-system';
 import { isArray, isFunction } from 'sat-utils';
 
-function getLoginPageActions(decorators = [], preSetUp?: () => void, postSetUp?: () => void) {
+function getLoginPageActions(
+  decorators = [],
+  preSetUp?: () => void,
+  postSetUp?: () => void,
+) {
   const pagePath = resolve(__dirname, './page');
 
   if (!isArray(decorators)) {
